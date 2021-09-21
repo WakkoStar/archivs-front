@@ -1,0 +1,40 @@
+@import 'constants.scss';
+
+@media (max-width: 600px) {
+  .main {
+    width: 100%;
+    margin-top: 30%;
+    h2 {
+      font-size: 6vw;
+      text-align: center;
+      font-family: $title-font;
+      color: $text-color;
+      margin: 0;
+      text-transform: capitalize;
+      width: 100%;
+    }
+
+    p {
+      font-size: 5vw;
+      line-height: 8vw;
+      width: 90%;
+      margin: 4vw auto;
+      font-family: $nav-font;
+      font-weight: 300;
+    }
+    .TitleContainer {
+      display: flex;
+      align-items: flex-end;
+      width: 90%;
+      margin: 4vw auto;
+      h2 {
+        width: 50%;
+      }
+      img {
+        width: 50vw;
+        height: 50vw;
+        object-fit: cover;
+      }
+    }
+  }
+}

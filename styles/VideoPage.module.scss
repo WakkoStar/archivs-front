@@ -1,0 +1,74 @@
+@import 'constants.scss';
+@import 'SharedStyles.scss';
+@media (max-width: 600px) {
+  .main {
+    a {
+      width: 100%;
+      height: 100%;
+    }
+    h2 {
+      padding: 2vw 0;
+      text-align: left;
+    }
+  }
+
+  .linkPreview {
+    position: relative;
+    .floatingDiv {
+      float: left;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      img {
+        width: 12vw;
+        height: 12vw;
+        padding: 2vw;
+        background-color: rgba($color: #000000, $alpha: 0.4);
+        align-self: center;
+      }
+    }
+  }
+
+  .videoPart {
+    margin: 3vw 0 0;
+    width: 100%;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 2vw;
+    }
+  }
+  .mainPartContainer {
+    width: 90%;
+    padding: 5%;
+    p {
+      font-size: 5vw;
+      line-height: 8vw;
+      font-weight: 300;
+      font-family: $nav-font;
+      margin: 0;
+    }
+  }
+  .secondPartContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 5%;
+    justify-content: space-between;
+    align-content: stretch;
+    p {
+      font-size: 5vw;
+      line-height: 4vw;
+      font-family: $nav-font;
+      margin: 0 0 4vw 0;
+
+      text-transform: capitalize;
+      text-align: center;
+      font-weight: 300;
+      padding: 2vw;
+    }
+  }
+}

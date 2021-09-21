@@ -1,0 +1,121 @@
+@import 'constants.scss';
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+
+  .main {
+    width: 100%;
+    margin-top: 15%;
+  }
+
+  .carouselContainer {
+    height: 40vh;
+  }
+  .carouselTextContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    div {
+      width: 90%;
+      height: 90%;
+      align-items: baseline;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding: 5%;
+      h2 {
+        text-transform: uppercase;
+        font-size: 4vw;
+        width: auto;
+        line-height: 4vw;
+        padding: 1vw 2vw;
+        font-family: $nav-font;
+        font-weight: bold;
+        background-color: $grey-light;
+        color: $text-color;
+        margin: 2vw 0;
+      }
+    }
+  }
+  .brochureContainer {
+    background-color: $grey-dark;
+    box-shadow: -1px 2px 10px 3px rgba(0, 0, 0, 0.3) inset;
+    h2 {
+      text-transform: uppercase;
+      font-size: 5vw;
+      width: auto;
+      line-height: 4vw;
+      padding: 8vw 0;
+      font-family: $title-font;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+    }
+  }
+
+  .productsContainer {
+    padding: 6vw 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+      font-size: 8vw;
+
+      font-family: $title-font;
+      color: $text-color;
+      margin: 0;
+    }
+    h3 {
+      font-size: 5vw;
+      font-family: $nav-font;
+      color: $text-color;
+      font-weight: 300;
+      margin: 0vw 0 3vw;
+    }
+    .productsWrapper {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  .imagesContainer {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    img {
+      width: 50%;
+      height: 50vh;
+      object-fit: cover;
+    }
+  }
+
+  .sponsorContainer {
+    padding: 6vw 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      font-size: 8vw;
+      padding: 2vw 0;
+      font-family: $title-font;
+      color: $text-color;
+      margin: 0;
+    }
+
+    .sponsorWrapper {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+  }
+}
