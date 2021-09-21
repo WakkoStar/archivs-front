@@ -1,4 +1,4 @@
-export const BASE_URL = "http://192.168.1.24:1337"; //TODO
+export const BASE_URL = "https://jeremy-capeau-back-j354g.ondigitalocean.app";
 
 export const fetchDataFromAPI = async (
   apiEndpoint,
