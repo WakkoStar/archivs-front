@@ -38,7 +38,7 @@ export default function PaiementElement() {
                 currentAdress={currentAdress}
                 setCurrentAdress={(adresse) => setCurrentAdress(adresse)}
               />
-              <button onClick={goToPayment}>Passer à l'étape suivante</button>
+              <button onClick={goToPayment}>Passer à l&apos;étape suivante</button>
             </div>
           )}
           {pageType == "payement" && (

@@ -15,7 +15,7 @@ export default function Article({
   return (
     <div className={styles.articleContainer}>
       <div className={styles.imageContainer}>
-        <img src={image} />
+        <img src={image} alt="article"/>
       </div>
       <div className={styles.textContainer}>
         <Link href={`/boutique/${productId}`} passHref>
@@ -34,7 +34,7 @@ export default function Article({
       </div>
       <div className={styles.handlerContainer}>
         <p className={styles.deleteTxt} onClick={deleteArticle}>
-          Supprimer l'article
+          Supprimer l&apos;article
         </p>
         {price.promoted ? (
           <div className={styles.promotedContainer}>

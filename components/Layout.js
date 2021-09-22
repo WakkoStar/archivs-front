@@ -35,7 +35,7 @@ export default function Layout({ children }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Archiv's - Boutique de posters et dérivés</title>
+        <title>Archiv&apos;s - Boutique de posters et dérivés</title>
         <meta
           name='description'
           content='Boutique de posters, mugs, paysages, dessins'
@@ -66,7 +66,7 @@ export default function Layout({ children }) {
           <button onClick={() => addContact(newsletterMail)}>Souscrire</button>
         </div>
         <div className={styles.endContainer}>
-          <p>@2021 Archiv's</p>
+          <p>@2021 Archiv&apos;s</p>
         </div>
       </footer>
     </div>

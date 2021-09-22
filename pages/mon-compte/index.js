@@ -102,7 +102,7 @@ export default function AccountPage({}) {
         <div className={styles.categoryContainer}>
           <ul>
             <li onClick={() => router.replace("/mon-compte?page=adresses")}>
-              Carnet d'adresses
+              Carnet d&apos;adresses
             </li>
             <li onClick={() => router.replace("/mon-compte?page=commandes")}>
               Mes commandes

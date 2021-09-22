@@ -157,7 +157,7 @@ export default function CheckoutForm({ adresse }) {
         />
       </div>
       <div className={styles.formRow}>
-        <label>Date d'expiration</label>
+        <label>Date d&apos;expiration</label>
         <CardExpiryElement
           id="card-element"
           options={cardStyle}

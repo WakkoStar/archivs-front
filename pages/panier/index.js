@@ -294,7 +294,7 @@ export default function PanierPage() {
                 Réduction : -{parseFloat(detailsPrice.reduction).toFixed(2)} €
               </p>
               <p>
-                Estimation des frais d'expédition :{" "}
+                Estimation des frais d&apos;expédition :{" "}
                 {parseFloat(detailsPrice.delivery).toFixed(2)} €
               </p>
               <p>
