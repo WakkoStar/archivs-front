@@ -21,8 +21,8 @@ export default function ContactPage() {
     }
 
     const msg = {
-      to: "delpiahugo@gmail.com", // Change to your recipient //TODO
-      from: "delpiahugo@gmail.com", // Change to your verified sender //TODO
+      to: "contact@archivs.fr", // Change to your recipient 
+      from: "contact@archivs.fr", // Change to your verified sender 
       subject: "Nouveau message venant de archiv's : " + subject,
       html: "email : " + email + "<br/><br/> message : " + message,
     };
@@ -39,7 +39,7 @@ export default function ContactPage() {
 
     const msg2 = {
       to: email,
-      from: "delpiahugo@gmail.com", // Change to your verified sender //TODO
+      from: "contact@archivs.fr", // Change to your verified sender
       subject: "Confirmation de réception",
       html:
         "<p>Nous confirmons que votre email a bien été recu pour notre équipe<p> <br/> " +
