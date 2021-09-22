@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Product from "../components/Product";
 import styles from "../styles/BoutiqueElement.module.scss";
-import { BASE_URL, fetchDataFromAPI } from "../utils/dataFetcher";
+import { fetchDataFromAPI } from "../utils/dataFetcher";
 import { useEffect, useState } from "react";
 
 export default function BoutiqueElement({ product, seeAlsoProducts }) {
@@ -74,11 +74,11 @@ export default function BoutiqueElement({ product, seeAlsoProducts }) {
     <Layout>
       <main className={styles.main}>
         <div className={styles.displayerContainer}>
-          <img src={`${BASE_URL}${previewUrl}`} alt={product.apercu.name} />
+          <img src={`${previewUrl}`} alt={product.apercu.name} />
           <div className={styles.displays}>
             {product.gallerie.map(({ id, url, name }) => (
               <div key={id} onClick={() => setPreviewUrl(url)}>
-                <img src={`${BASE_URL}${url}`} alt={name} />
+                <img src={`${url}`} alt={name} />
               </div>
             ))}
           </div>
@@ -174,7 +174,7 @@ export default function BoutiqueElement({ product, seeAlsoProducts }) {
                     key={id}
                     data={{ nouveau, stock, type_de_produit }}
                     title={nom}
-                    src={`${BASE_URL}${apercu.url}`}
+                    src={`${apercu.url}`}
                   />
                 )
               )}

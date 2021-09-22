@@ -1,7 +1,6 @@
 import Layout from "../../components/Layout";
-import Link from "next/link";
 import styles from "../../styles/AccountPage.module.scss";
-import { BASE_URL, fetchDataFromAPI } from "../../utils/dataFetcher";
+import { fetchDataFromAPI } from "../../utils/dataFetcher";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Adresses from "../../components/Adresses";

@@ -1,17 +1,11 @@
 import Layout from '../../components/Layout';
-import Link from 'next/link';
 import styles from '../../styles/ContactPage.module.scss';
-import { BASE_URL, fetchDataFromAPI } from '../../utils/dataFetcher';
-import axios from 'axios';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { postDataToAPI, putDataToAPI } from '../../utils/dataPoster';
 import { addContact } from '../../utils/sendGridRequest';
 
 export default function ResetPage({}) {
   const [error, setError] = useState('');
   const [mail, setMail] = useState(undefined);
-  const router = useRouter();
 
   const subscribe = () => {
     if (!mail) {

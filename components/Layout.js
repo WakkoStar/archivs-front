@@ -1,14 +1,8 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from './Navbar';
 import styles from '../styles/Layout.module.scss';
-
-import InstaPic from '../assets/logos/instagram.png';
-import FacebookPic from '../assets/logos/facebook.png';
-import MailPic from '../assets/logos/mail.png';
-import TelPic from '../assets/logos/tel.png';
-import { BASE_URL, fetchDataFromAPI } from '../utils/dataFetcher';
+import {fetchDataFromAPI } from '../utils/dataFetcher';
 import { useEffect, useState } from 'react';
 import { addContact } from '../utils/sendGridRequest';
 
@@ -47,7 +41,7 @@ export default function Layout({ children }) {
       <footer className={styles.footer}>
         <div className={styles.linksContainer}>
           {footerLinks.map(({ lien, nom, id, pdf }) => (
-            <Link href={pdf ? `${BASE_URL}${pdf.url}` : lien} key={id}>
+            <Link href={pdf ? `${pdf.url}` : lien} key={id}>
               <a>{nom}</a>
             </Link>
           ))}

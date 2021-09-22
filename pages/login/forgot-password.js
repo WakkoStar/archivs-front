@@ -1,8 +1,5 @@
 import Layout from '../../components/Layout';
-import Link from 'next/link';
 import styles from '../../styles/ContactPage.module.scss';
-import { BASE_URL, fetchDataFromAPI } from '../../utils/dataFetcher';
-import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { postDataToAPI } from '../../utils/dataPoster';

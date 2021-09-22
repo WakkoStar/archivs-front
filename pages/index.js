@@ -1,11 +1,9 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import Layout from "../components/Layout";
 import Product from "../components/Product";
 import styles from "../styles/BoutiquePage.module.scss";
 import FilterPic from "../assets/logos/filter.png";
-import { BASE_URL, fetchDataFromAPI } from "../utils/dataFetcher";
+import { fetchDataFromAPI } from "../utils/dataFetcher";
 import { useState, useEffect } from "react";
 
 export default function BoutiquePage({ categories, products, codePromo }) {
@@ -81,7 +79,7 @@ export default function BoutiquePage({ categories, products, codePromo }) {
       >
         {codePromo.banniere && (
           <img
-            src={`${BASE_URL}${codePromo.banniere.url}`}
+            src={`${codePromo.banniere.url}`}
             className={styles.banniere}
             alt="banniere"
           />
@@ -159,7 +157,7 @@ export default function BoutiquePage({ categories, products, codePromo }) {
                   key={id}
                   data={{ nouveau, stock, type_de_produit }}
                   title={nom}
-                  src={`${BASE_URL}${apercu.url}`}
+                  src={`${apercu.url}`}
                 />
               );
             }

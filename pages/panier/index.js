@@ -194,7 +194,7 @@ export default function PanierPage() {
               ? selectedProductType.promotion.prix
               : null,
           },
-          image: `${BASE_URL}${selectedProduct.apercu.url}`,
+          image: `${selectedProduct.apercu.url}`,
           stock: selectedProductType.stock,
         };
       });
