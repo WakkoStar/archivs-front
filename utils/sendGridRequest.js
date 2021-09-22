@@ -11,7 +11,7 @@ export const addContact = (mail) => {
       { contacts: [{ email: mail }] },
       {
         headers: {
-          Authorization: 'Bearer ' + process.env.SG_PRIVATE_KEY,
+          Authorization: 'Bearer ' + process.env.NEXT_PUBLIC_SG_PRIVATE_KEY,
           'Content-Type': 'application/json',
         },
       }
