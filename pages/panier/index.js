@@ -218,9 +218,9 @@ export default function PanierPage() {
       const info = await fetchDataFromAPI("/comandes-info", {});
       const reduction = (code?.pourcentage / 100) * subTotal || 0;
       const delivery =
-        subTotal - reduction < info.prix_min_livraison_gratuite
-          ? info.prix_livraison
-          : 0;
+      (subTotal - reduction) >= info.prix_min_livraison_gratuite
+      ? 0
+      : info.prix_livraison;
 
       setDetailsPrice({
         subTotal,
