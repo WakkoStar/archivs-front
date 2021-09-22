@@ -176,5 +176,6 @@ export async function getStaticProps(context) {
   const codePromo = await fetchDataFromAPI("/codes-promos/check/public", {});
   return {
     props: { categories, products, codePromo },
+    revalidate: 60, 
   };
 }

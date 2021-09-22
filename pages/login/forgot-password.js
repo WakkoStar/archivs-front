@@ -50,5 +50,5 @@ export default function ResetPage({}) {
 }
 
 export async function getStaticProps(context) {
-  return { props: {} };
+  return { props: {}};
 }
