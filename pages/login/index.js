@@ -1,12 +1,12 @@
-import Layout from '../../components/Layout';
-import Link from 'next/link';
-import styles from '../../styles/ContactPage.module.scss';
-import { BASE_URL, fetchDataFromAPI } from '../../utils/dataFetcher';
-import axios from 'axios';
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { postDataToAPI } from '../../utils/dataPoster';
-import { addContact } from '../../utils/sendGridRequest';
+import Layout from "../../components/Layout";
+import Link from "next/link";
+import styles from "../../styles/ContactPage.module.scss";
+import { BASE_URL, fetchDataFromAPI } from "../../utils/dataFetcher";
+import axios from "axios";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { postDataToAPI } from "../../utils/dataPoster";
+import { addContact } from "../../utils/sendGridRequest";
 
 export default function LoginPage({}) {
   const router = useRouter();
@@ -18,22 +18,22 @@ export default function LoginPage({}) {
   const [isSubscribed, setIsSubscribed] = useState(true);
   const [mail, setMail] = useState(undefined);
   const [password, setPassword] = useState(undefined);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const setUser = (response) => {
     const user = response.data.user;
     const jwt = response.data.jwt;
-    localStorage.setItem('user', JSON.stringify({ ...user, jwt }));
-    router.replace(`/${destination || 'mon-compte'}`);
+    localStorage.setItem("user", JSON.stringify({ ...user, jwt }));
+    router.replace(`/${destination || "mon-compte"}`);
   };
 
   const setAccount = async (isNewAccount) => {
-    if (!mail || mail == '') {
-      setError('Renseignez votre mail');
+    if (!mail || mail == "") {
+      setError("Renseignez votre mail");
       return;
     }
-    if (!password || password == '') {
-      setError('Renseignez votre mot de passe');
+    if (!password || password == "") {
+      setError("Renseignez votre mot de passe");
       return;
     }
     if (isNewAccount) {
@@ -47,13 +47,13 @@ export default function LoginPage({}) {
       }
 
       if (password.length < 8) {
-        setError('Mot de passe trop court');
+        setError("Mot de passe trop court");
         return;
       }
 
       if (!password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/)) {
         setError(
-          'Votre mot de passe doit contenir au moins une majuscule, une minuscule et un nombre'
+          "Votre mot de passe doit contenir au moins une majuscule, une minuscule et un nombre"
         );
         return;
       }
@@ -65,24 +65,24 @@ export default function LoginPage({}) {
       };
 
       postDataToAPI(
-        '/auth/local/register',
+        "/auth/local/register",
         body,
         (response) => {
           alert(
-            'Votre compte a bien été créé, vous recevrez une confirmation par mail'
+            "Votre compte a bien été créé, vous recevrez une confirmation par mail"
           );
           if (isSubscribed) addContact(mail);
           setUser(response);
 
           postDataToAPI(
-            '/a-propos',
+            "/a-propos",
             {},
             () => {
-              console.log('email sended to', mail);
+              console.log("email sended to", mail);
             },
             () => {
               console.log(
-                'Votre compte a bien été créée mais impossible de vous envyer un e-mail...'
+                "Votre compte a bien été créée mais impossible de vous envyer un e-mail..."
               );
             },
             {
@@ -103,7 +103,7 @@ export default function LoginPage({}) {
       };
 
       postDataToAPI(
-        '/auth/local',
+        "/auth/local",
         body,
         (response) => {
           setUser(response);
@@ -118,16 +118,16 @@ export default function LoginPage({}) {
   return (
     <Layout>
       <main className={styles.main}>
-        <h2>{isRegister ? 'Enregistrement' : 'Connexion'}</h2>
+        <h2>{isRegister ? "Enregistrement" : "Connexion"}</h2>
         <input
-          type='email'
-          placeholder='Votre mail'
+          type="email"
+          placeholder="Votre mail"
           value={mail}
           onChange={(e) => setMail(e.target.value)}
         />
         <input
-          type={inputShow ? 'text' : 'password'}
-          placeholder='Mot de passe'
+          type={inputShow ? "text" : "password"}
+          placeholder="Mot de passe"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -135,26 +135,26 @@ export default function LoginPage({}) {
           className={styles.showPassword}
           onClick={() => setInputShow(!inputShow)}
         >
-          {inputShow ? 'Cacher le mot de passe' : 'Montrer le mot de passe'}
+          {inputShow ? "Cacher le mot de passe" : "Montrer le mot de passe"}
         </label>
         <p className={styles.errorMessage}>{error}</p>
         {isRegister ? (
           <>
             <div className={styles.newsletterContainer}>
               <input
-                type='checkbox'
+                type="checkbox"
                 onChange={(e) => setIsSubscribed(!isSubscribed)}
                 checked={isSubscribed}
               />
-              <p>S'abonner à la newsletter</p>
+              <p>S&apos;abonner à la newsletter</p>
             </div>
 
-            <button onClick={() => setAccount(true)}>S'enregistrer</button>
+            <button onClick={() => setAccount(true)}>S&apos;enregistrer</button>
             <button
               className={styles.secondButton}
               onClick={() => setIsRegister(!isRegister)}
             >
-              J'ai déjà un compte
+              J&apos;ai déjà un compte
             </button>
           </>
         ) : (
@@ -170,14 +170,14 @@ export default function LoginPage({}) {
         )}
         {isRegister ? (
           <p className={styles.acceptConditions}>
-            J'accepte que mes données soient exploitées conformément à la la
-            déclaration de confidentialité dans le cadre de mon compte
-            d'utilisateur, de mes commandes et de mes autres utilisations du
-            site www.jeremycapeau.fr
+            J&apos;accepte que mes données soient exploitées conformément à la
+            la déclaration de confidentialité dans le cadre de mon compte
+            d&apos;utilisateur, de mes commandes et de mes autres utilisations
+            du site www.jeremycapeau.fr
           </p>
         ) : (
-          <Link href='/login/forgot-password'>
-            <a>J'ai oublié mon mot de passe</a>
+          <Link href="/login/forgot-password">
+            <a>J&apos;ai oublié mon mot de passe</a>
           </Link>
         )}
       </main>

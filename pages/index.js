@@ -1,22 +1,22 @@
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import Layout from '../components/Layout';
-import Product from '../components/Product';
-import styles from '../styles/BoutiquePage.module.scss';
-import FilterPic from '../assets/logos/filter.png';
-import { BASE_URL, fetchDataFromAPI } from '../utils/dataFetcher';
-import { useState, useEffect } from 'react';
+import Image from "next/image";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import Layout from "../components/Layout";
+import Product from "../components/Product";
+import styles from "../styles/BoutiquePage.module.scss";
+import FilterPic from "../assets/logos/filter.png";
+import { BASE_URL, fetchDataFromAPI } from "../utils/dataFetcher";
+import { useState, useEffect } from "react";
 
 export default function BoutiquePage({ categories, products, codePromo }) {
   const [filter, setFilter] = useState(undefined);
   const [sort, setSort] = useState(false);
   const [sortedProducts, setSortedProducts] = useState([]);
-  const [sortedType, setSortedType] = useState({ sort: 'ventes', desc: true });
-  const [filterText, setFilterText] = useState('');
+  const [sortedType, setSortedType] = useState({ sort: "ventes", desc: true });
+  const [filterText, setFilterText] = useState("");
 
   const filterProduct = ({ nom, tags }, text) => {
-    if (text == '') {
+    if (text == "") {
       return true;
     }
     return (
@@ -32,7 +32,7 @@ export default function BoutiquePage({ categories, products, codePromo }) {
       setSort(false);
 
       let res = products;
-      if (type == 'prix') {
+      if (type == "prix") {
         res = res.sort((a, b) => {
           let settedMinPriceA = Number.MAX_VALUE;
           a.type_de_produit.forEach(({ prix, promotion }) => {
@@ -58,9 +58,9 @@ export default function BoutiquePage({ categories, products, codePromo }) {
             ? settedMinPriceB - settedMinPriceA
             : settedMinPriceA - settedMinPriceB;
         });
-      } else if (type == 'created_at') {
+      } else if (type == "created_at") {
         res = res.sort((a, b) => Date.parse(b[type]) - Date.parse(a[type]));
-      } else if (type == 'nom') {
+      } else if (type == "nom") {
         res = res.sort((a, b) => a[type].localeCompare(b.type));
       } else {
         res = res.sort((a, b) =>
@@ -70,19 +70,20 @@ export default function BoutiquePage({ categories, products, codePromo }) {
       setSortedProducts(res);
     };
 
-    sortProducts('prix');
+    sortProducts("prix");
   }, [products, setSortedType, sortedType]);
 
   return (
     <Layout>
       <main
         className={styles.main}
-        style={{ marginTop: codePromo.banniere ? '17%' : '20%' }}
+        style={{ marginTop: codePromo.banniere ? "17%" : "20%" }}
       >
         {codePromo.banniere && (
           <img
             src={`${BASE_URL}${codePromo.banniere.url}`}
             className={styles.banniere}
+            alt="banniere"
           />
         )}
         <h2>Produits</h2>
@@ -98,36 +99,36 @@ export default function BoutiquePage({ categories, products, codePromo }) {
         </div>
         <div className={styles.productsSortContainer}>
           <button onClick={() => setSort(!sort)}>
-            <Image src={FilterPic} />
+            <Image src={FilterPic} alt="filter" />
           </button>
           <div
             className={
               styles[
-                sort ? 'productsSortDropdownSelected' : 'productsSortDropdown'
+                sort ? "productsSortDropdownSelected" : "productsSortDropdown"
               ]
             }
           >
-            <p onClick={() => setSortedType({ sort: 'ventes', desc: true })}>
+            <p onClick={() => setSortedType({ sort: "ventes", desc: true })}>
               Popularité
             </p>
-            <p onClick={() => setSortedType({ sort: 'prix', desc: false })}>
+            <p onClick={() => setSortedType({ sort: "prix", desc: false })}>
               Prix croissant
             </p>
-            <p onClick={() => setSortedType({ sort: 'prix', desc: true })}>
+            <p onClick={() => setSortedType({ sort: "prix", desc: true })}>
               Prix décroissant
             </p>
-            <p onClick={() => setSortedType({ sort: 'nom', desc: false })}>
+            <p onClick={() => setSortedType({ sort: "nom", desc: false })}>
               Nom
             </p>
             <p
-              onClick={() => setSortedType({ sort: 'created_at', desc: true })}
+              onClick={() => setSortedType({ sort: "created_at", desc: true })}
             >
               Nouveauté
             </p>
           </div>
           <input
-            type='text'
-            placeholder='Rechercher'
+            type="text"
+            placeholder="Rechercher"
             onChange={(e) => setFilterText(e.target.value)}
           />
         </div>
@@ -170,9 +171,9 @@ export default function BoutiquePage({ categories, products, codePromo }) {
 }
 
 export async function getStaticProps(context) {
-  const categories = await fetchDataFromAPI('/categories', []);
-  const products = await fetchDataFromAPI('/produits', []);
-  const codePromo = await fetchDataFromAPI('/codes-promos/check/public', {});
+  const categories = await fetchDataFromAPI("/categories", []);
+  const products = await fetchDataFromAPI("/produits", []);
+  const codePromo = await fetchDataFromAPI("/codes-promos/check/public", {});
   return {
     props: { categories, products, codePromo },
   };
