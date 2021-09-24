@@ -34,9 +34,36 @@ export default function AccountPage({}) {
         alert(
           "Votre mot de passe peut être réinitialisé. Un mail a été envoyé"
         );
+        localStorage.removeItem("user");
+        router.replace("/");
       },
       () => {
         alert("Impossible d'envoyer un mail...");
+      }
+    );
+  };
+
+  const deleteAccount = () => {
+    const r = confirm("Voulez vous supprimer votre compte ?");
+    if (!r) {
+      return;
+    }
+    postDataToAPI(
+      "/users-permissions/users/deleteMe",
+      {},
+      () => {
+        alert("Votre compte est supprimé. Nous espérons vous revoir...");
+        localStorage.removeItem("user");
+        router.replace("/");
+      },
+      (e) => {
+        console.log(e);
+        alert("Impossible de supprimer le compte");
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${user.jwt}`,
+        },
       }
     );
   };
@@ -53,6 +80,10 @@ export default function AccountPage({}) {
         },
       });
       setCommandes(res);
+      if (res?.statusCode == 401) {
+        localStorage.removeItem("user");
+        router.replace("/login");
+      }
       console.log(res);
     };
 
@@ -60,6 +91,10 @@ export default function AccountPage({}) {
   }, [router]);
 
   const cancelPayement = (id) => {
+    const r = confirm("Voulez vous annuler votre commande ?");
+    if (!r) {
+      return;
+    }
     postDataToAPI(
       "/commandes/cancel",
       { commandeId: id },
@@ -106,8 +141,9 @@ export default function AccountPage({}) {
             <li onClick={() => router.replace("/mon-compte?page=commandes")}>
               Mes commandes
             </li>
-            <li onClick={() => resetPassword()}>Modifier mot de passe</li>
+            <li onClick={resetPassword}>Modifier mot de passe</li>
             <li onClick={disconnect}>Déconnexion</li>
+            <li onClick={deleteAccount}>Supprimer mon compte</li>
           </ul>
         </div>
         <div className={styles.container}>

@@ -81,6 +81,7 @@ export default function CheckoutForm({ adresse }) {
             card: elements.getElement(CardNumberElement),
             billing_details: {
               name: adresse.nom + " " + adresse.prenom,
+              email: user.email,
             },
           },
         });
