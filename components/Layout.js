@@ -43,7 +43,7 @@ export default function Layout({ children }) {
       <footer className={styles.footer}>
         <div className={styles.coordsContainer} >
           <div className={styles.coordsWrapper}>
-          <h3>REJOIGNEZ L'AVENTURE SUR </h3>
+          <h3>REJOIGNEZ L&apos;AVENTURE SUR </h3>
               <Link href={data?.instagram_archivs_link} passHref>
               <div className={styles.networkContainer}>
                 <img src="https://i0.wp.com/voxeuropae.com/wp-content/uploads/2019/02/SKq9yH-black-and-white-instagram-logo-png.png?ssl=1"/>

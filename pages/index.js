@@ -96,7 +96,7 @@ export default function HomePage({
         </div>
         <div className={styles.galleryContainer}>
           <h2>DES CLIENTS CONQUIS ?</h2>
-          <h3>Parce qu'une image vaut mille mots...</h3>
+          <h3>Parce qu&apos;une image vaut mille mots...</h3>
           <div className={styles.galleryWrapper}>
             {client_conquis?.map(({id, url}) => 
               <img key={id} src={url}></img>
