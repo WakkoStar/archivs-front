@@ -18,7 +18,7 @@ export default function Article({
         <img src={image} alt="article"/>
       </div>
       <div className={styles.textContainer}>
-        <Link href={`/${productId}`} passHref>
+        <Link href={`boutique/${productId}`} passHref>
           <h3>{title}</h3>
         </Link>
 

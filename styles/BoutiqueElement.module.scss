@@ -1,4 +1,4 @@
-@import "constants.scss";
+@import 'constants.scss';
 
 .main {
   width: 100%;
@@ -6,27 +6,60 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  .displayerContainer {
-    max-height: 60vh;
+  .firstDivContainer {
+    width: 100%;
+    height: 90vh;
     display: flex;
-    width: 23%;
+    align-items: center;
+    justify-content: center;
+  }
+  .displayerContainer {
+    height: 90%;
+    padding-top: 5%;
+    display: flex;
+    width: 40%;
+    margin: 0 5vw;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    .mainDisplay {
+      height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     img {
-      width: 100%;
-      max-height: 80%;
+      max-width: 100%;
+      height: 100%;
       object-fit: contain;
     }
     .displays {
       width: 100%;
+      height: 6vw;
       overflow-x: scroll;
       overflow-y: hidden;
       display: flex;
-      height: 25%;
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: $grey-dark;
+      }
+
+      &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background-color: $text-color;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $text-color;
+        border-radius: 0.5vw;
+      }
 
       div {
         margin: 1% 0 1% 1%;
         width: 5vw;
         height: 100%;
+        flex-shrink: 0;
         transition: all 0.2s;
         &:hover {
           opacity: 0.8;
@@ -35,7 +68,7 @@
         img {
           height: 5vw;
           width: 5vw;
-          object-fit: cover;
+          object-fit: contain;
         }
         &:last-child {
           margin-right: 2%;
@@ -45,39 +78,64 @@
   }
   .mainInfosContainer {
     display: flex;
-    width: 22%;
+    width: 30%;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
 
     h2 {
-      font-size: 1.5vw;
+      font-size: 2vw;
       text-transform: uppercase;
       font-family: $title-font;
       color: $text-color;
       margin: 0;
-      padding: 1.5vw 0;
+      width: 100%;
+      text-align: left;
+      padding: 0.5vw 0;
     }
 
     .sizeSelectorLabel {
-      margin: 0;
-      font-size: 0.8vw;
+      margin: 2vw 0 0 0;
+      font-size: 1vw;
+      width: 100%;
+      padding-top: 1vw;
+      text-align: left;
       font-family: $nav-font;
-      font-weight: 500;
+      font-weight: 300;
     }
     .sizeSelector {
       display: flex;
       width: 100%;
-      height: 5vw;
+      height: 4vw;
+      padding-bottom: 1vw;
+      margin-bottom: 2vw;
+      overflow-y: hidden;
       overflow-x: scroll;
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: $grey-dark;
+      }
+
+      &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background-color: $text-color;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $text-color;
+        border-radius: 0.5vw;
+      }
 
       .notSelected,
       .selected {
-        border: 1px solid rgb(37, 219, 158);
+        border: 1px solid $grey-dark;
         display: flex;
         min-width: 20%;
         align-items: center;
         justify-content: center;
-        padding: 1vw;
+        padding: 1.5vw;
+        border: 1px $grey-light solid;
         margin: 0.5vw;
         transition: all 0.2s;
         &:hover {
@@ -86,14 +144,14 @@
         }
         p {
           margin: 0;
-          font-size: 0.8vw;
-          font-weight: 500;
+          font-size: 1vw;
+          font-weight: 300;
           font-family: $nav-font;
         }
       }
 
       .selected {
-        background-color: $primaryColor;
+        background-color: $grey-dark;
       }
     }
 
@@ -103,10 +161,10 @@
       border: 0;
       font-size: 0.8vw;
       font-family: $nav-font;
-      font-weight: bold;
+      font-weight: 300;
       padding: 3% 0;
       margin-top: 2vw;
-      width: 90%;
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -117,10 +175,11 @@
       }
       p {
         margin: 0 0.2vw;
+        font-size: 1.2vw;
       }
       .promotedValue {
-        font-weight: 500;
-        color: $grey-dark;
+        font-weight: 300;
+        color: $grey-light;
         text-decoration: line-through;
       }
       &:disabled {
@@ -129,37 +188,28 @@
       }
     }
 
-    .detailsContainer {
-      width: 90%;
+    .detailsContainer,
+    .detailsDangerContainer {
+      width: 100%;
       transition: all 0.2s;
       background-color: $grey-dark;
-      margin: 0.5vw 0 1vw 0;
+      margin: 1vw 0 1vw 0;
       p {
         margin: 0.5vw 0;
         text-align: center;
         font-size: 1vw;
-        color: $primaryColor;
-        font-weight: 500;
+        color: $text-color;
+        font-weight: 300;
       }
     }
     .detailsDangerContainer {
-      transition: all 0.2s;
-      width: 90%;
       background-color: $dangerColor;
-      margin: 0.5vw 0 1vw 0;
-      p {
-        margin: 0.5vw 0;
-        text-align: center;
-        font-size: 1vw;
-        color: white;
-        font-weight: 500;
-      }
     }
   }
 
   .productInfoContainer {
-    background-color: $grey-light;
-    padding: 3vw 0;
+    background-color: $grey-dark;
+    padding: 5vw 0;
     width: 50%;
     padding: 0 25%;
     p {
@@ -188,7 +238,7 @@
 
   .productsContainer {
     width: 70%;
-    padding: 0 10%;
+    padding: 5vw 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -204,7 +254,7 @@
       text-transform: uppercase;
       font-family: $nav-font;
       color: $text-color;
-      font-weight: 500;
+      font-weight: 300;
       margin: 2vw 0;
     }
     .productsWrapper {
@@ -219,22 +269,29 @@
   .main {
     width: 100%;
     margin-top: 15%;
-
+    .firstDivContainer {
+      flex-direction: column;
+      width: 90%;
+      height: 100vh;
+    }
     .displayerContainer {
-      max-height: 100vh;
+      height: auto;
       width: 100%;
       display: flex;
       flex-direction: column;
+      .mainDisplay {
+        height: 50vh;
+      }
       img {
-        width: 100%;
-        max-height: 86%;
+        max-width: 100%;
+        height: 100%;
         object-fit: contain;
       }
       .displays {
         width: 100%;
         overflow-x: scroll;
         display: flex;
-        height: 30%;
+        height: 25vw;
         div {
           margin: 2% 0 2% 2%;
           width: 20vw;
@@ -253,33 +310,38 @@
     .mainInfosContainer {
       display: flex;
       width: 100%;
+      margin: 5vw 0;
+      height: auto;
       align-items: center;
       flex-direction: column;
 
       h2 {
-        font-size: 6vw;
+        font-size: 7vw;
         text-transform: uppercase;
         font-family: $title-font;
         color: $text-color;
         margin: 0;
-        padding: 5vw 0;
+        padding: 2vw 0;
       }
 
       .sizeSelectorLabel {
-        margin: 0vw 0 2vw 0;
-        font-size: 3.5vw;
+        margin: 0vw 0 0vw 0;
+        font-size: 4vw;
+        padding-top: 1vw;
+        text-align: left;
         font-family: $nav-font;
-        font-weight: 500;
+        font-weight: 300;
       }
       .sizeSelector {
         display: flex;
         width: 100%;
+        padding-bottom: 1vw;
         height: 15vw;
         overflow-x: scroll;
 
         .notSelected,
         .selected {
-          border: 1px solid rgb(37, 219, 158);
+          border: 1px $grey-light solid;
           display: flex;
           min-width: 30%;
           align-items: center;
@@ -289,13 +351,13 @@
           p {
             margin: 0;
             font-size: 4vw;
-            font-weight: 500;
+            font-weight: 300;
             font-family: $nav-font;
           }
         }
 
         .selected {
-          background-color: $primaryColor;
+          background-color: $grey-light;
         }
       }
 
@@ -305,21 +367,21 @@
         border: 0;
         font-size: 4.5vw;
         font-family: $nav-font;
-        font-weight: bold;
+        font-weight: 300;
         padding: 5% 0;
         margin-top: 5vw;
-        width: 90%;
         display: flex;
         justify-content: center;
         align-items: center;
 
         p {
+          font-size: 5vw;
           margin: 0 1vw;
         }
         .promotedValue {
-          font-size: 4.5vw;
-          font-weight: 500;
-          color: $grey-dark;
+          font-size: 5vw;
+          font-weight: 300;
+          color: $grey-light;
           text-decoration: line-through;
         }
         &:disabled {
@@ -329,7 +391,6 @@
       }
 
       .detailsContainer {
-        width: 90%;
         transition: all 0.2s;
         background-color: $grey-dark;
         margin: 2vw 0 4vw 0;
@@ -337,21 +398,19 @@
           margin: 2vw 0;
           text-align: center;
           font-size: 4vw;
-          color: $primaryColor;
-          font-weight: 500;
+          font-weight: 300;
         }
       }
       .detailsDangerContainer {
         transition: all 0.2s;
-        width: 90%;
         background-color: $dangerColor;
         margin: 2vw 0 4vw 0;
         p {
           margin: 2vw 0;
           text-align: center;
-          color: white;
+          color: $text-color;
           font-size: 4vw;
-          font-weight: 500;
+          font-weight: 300;
         }
       }
     }
@@ -386,7 +445,7 @@
 
     .productsContainer {
       padding: 6vw 0;
-      width: 100%;
+      width: 80%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -402,7 +461,7 @@
         text-transform: uppercase;
         font-family: $nav-font;
         color: $text-color;
-        font-weight: 500;
+        font-weight: 300;
         margin: 2vw 0;
       }
       .productsWrapper {

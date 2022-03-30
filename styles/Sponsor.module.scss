@@ -1,4 +1,4 @@
-@import 'constants.scss';
+@import "constants.scss";
 
 @media (max-width: 600px) {
   .sponsorContainer {
@@ -12,7 +12,7 @@
       padding: 4vw 0;
       font-size: 4vw;
       width: 80%;
-      font-weight: 500;
+      font-weight: 300;
       font-family: $nav-font;
       text-align: center;
     }

@@ -21,7 +21,7 @@ export default function SucceedPage() {
       const res = await fetchDataFromAPI(
         '/commandes/me/' + commandeId,
         { uuid: '' },
-        { headers: { Authorization: `Bearer ${user.jwt}` } }
+        { headers: { Authorization: `Bearer ${user?.jwt}` } }
       );
       setCommande(res);
     };

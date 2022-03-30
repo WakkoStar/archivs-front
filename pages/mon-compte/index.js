@@ -62,7 +62,7 @@ export default function AccountPage({}) {
       },
       {
         headers: {
-          Authorization: `Bearer ${user.jwt}`,
+          Authorization: `Bearer ${user?.jwt}`,
         },
       }
     );
@@ -76,7 +76,7 @@ export default function AccountPage({}) {
     const fetchData = async () => {
       const res = await fetchDataFromAPI("/commandes/me", [], {
         headers: {
-          Authorization: `Bearer ${user.jwt}`,
+          Authorization: `Bearer ${user?.jwt}`,
         },
       });
       setCommandes(res);
@@ -84,7 +84,6 @@ export default function AccountPage({}) {
         localStorage.removeItem("user");
         router.replace("/login");
       }
-      console.log(res);
     };
 
     fetchData();
@@ -108,7 +107,7 @@ export default function AccountPage({}) {
       },
       {
         headers: {
-          Authorization: `Bearer ${user.jwt}`,
+          Authorization: `Bearer ${user?.jwt}`,
         },
       }
     );
@@ -135,14 +134,14 @@ export default function AccountPage({}) {
         <h2>Mon compte</h2>
         <div className={styles.categoryContainer}>
           <ul>
-            <li onClick={() => router.replace("/mon-compte?page=adresses")}>
+            <li onClick={() => router.replace("/mon-compte?page=adresses")} className ={page == "adresses" ? styles.selected: undefined}>
               Carnet d&apos;adresses
             </li>
-            <li onClick={() => router.replace("/mon-compte?page=commandes")}>
+            <li onClick={() => router.replace("/mon-compte?page=commandes")} className ={page == "commandes" ? styles.selected: undefined}>
               Mes commandes
             </li>
             <li onClick={resetPassword}>Modifier mot de passe</li>
-            <li onClick={disconnect}>Déconnexion</li>
+            <li onClick={disconnect}>Se déconnecter</li>
             <li onClick={deleteAccount}>Supprimer mon compte</li>
           </ul>
         </div>

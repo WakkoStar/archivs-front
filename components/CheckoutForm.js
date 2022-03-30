@@ -33,7 +33,7 @@ export default function CheckoutForm({ adresse }) {
     style: {
       base: {
         iconColor: "#c4f0ff",
-        color: "#484848",
+        color: "white",
         fontWeight: 400,
         fontFamily: "Montserrat, Open Sans, Segoe UI, sans-serif",
         fontSize: "16px",
@@ -120,7 +120,7 @@ export default function CheckoutForm({ adresse }) {
           },
           {
             headers: {
-              Authorization: "Bearer " + user.jwt,
+              Authorization: "Bearer " + user?.jwt,
             },
           }
         );
@@ -132,7 +132,7 @@ export default function CheckoutForm({ adresse }) {
       },
       {
         headers: {
-          Authorization: "Bearer " + user.jwt,
+          Authorization: "Bearer " + user?.jwt,
         },
       }
     );

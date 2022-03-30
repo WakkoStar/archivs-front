@@ -1,5 +1,5 @@
 @import 'constants.scss';
-
+@import 'SharedStyles.scss';
 .container {
   width: 100%;
 }
@@ -11,7 +11,7 @@
 
 .footer {
   display: flex;
-  background-color: $grey-medium;
+  background-color: $bg-color;
   flex-direction: column;
   .brandContainer {
     display: flex;
@@ -25,51 +25,60 @@
   }
   .linksContainer {
     display: flex;
-    width: 40%;
-    padding: 2vw 30%;
-    flex-wrap: wrap;
+    width: 80%;
+    justify-content: space-around;
+    padding: 2vw 0;
+    align-self: center;
     a {
-      color: $grey-dark;
-      text-decoration: underline;
-      width: 50%;
-      margin: 1% 0;
-      font-size: 0.8vw;
+      color: $text-color;
+      text-decoration: none;
+
+      text-align: center;
+      font-size: 1.2vw;
       font-family: $nav-font;
-      font-weight: bold;
+      font-weight: 300;
     }
   }
   .newsletterContainer {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     width: 40%;
-    padding: 2vw 30%;
+    align-items: center;
+    margin: 2vw 0;
+    padding: 3vw 30%;
     background-color: $grey-dark;
     p {
-      color: white;
-      margin: 0 0 1vw;
-      font-weight: 500;
+      color: $text-color;
+      margin: 0 0 1.5vw;
+      width: 100%;
+      text-align: center;
+      font-weight: 300;
       font-family: $nav-font;
-      font-size: 0.8vw;
-      line-height: 0.8vw;
+      font-size: 1.2vw;
+      line-height: 1vw;
     }
     input {
-      width: 96%;
+      width: 70%;
       padding: 1.5% 2% 1.5%;
-      font-size: 0.8vw;
-      font-weight: 500;
+      font-size: 1vw;
+      font-weight: 300;
       font-family: $nav-font;
       border: 0;
+      height: 1vw;
+      background-color: $bg-color;
+      display: inline;
     }
     button {
       color: $text-color;
       background-color: $primaryColor;
       border: 0;
-      font-size: 0.8vw;
+      margin-left: 2vw;
+      padding: 1.5% 2% 1.5%;
+      display: inline;
+      font-size: 1vw;
       font-family: $nav-font;
-      font-weight: bold;
-      padding: 2% 0;
-      margin-top: 1vw;
-      width: 100%;
+      font-weight: 300;
+      width: 20%;
       transition: all 0.2s;
       &:hover {
         opacity: 0.8;
@@ -77,29 +86,61 @@
       }
     }
   }
-  .coordContainer {
+  .coordsContainer {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 95%;
-    background-color: $grey-light;
-    padding: 5% 0 5% 5%;
-    div {
+    padding: 2vw 0;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+    align-self: center;
+    .lastPhotosContainer {
       display: flex;
-      margin: 5% 0;
-      justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       img {
-        width: 4vw;
-        height: 4vw;
+        width: 17.3vw;
+        height: 17.3vw;
+        margin-left: 0.5vw;
         object-fit: cover;
       }
-      p {
-        font-size: 4vw;
+    }
+    .coordsWrapper {
+      display: flex;
+      margin-left: 0.5vw;
+      flex-direction: column;
+      align-items: center;
+      width: 40%;
+      padding: 2vw 0 3.5vw;
+      background-color: #d2dcd8;
+      h3 {
+        font-size: 1.3vw;
         font-family: $nav-font;
-        margin: 0;
+        color: $grey-dark;
         font-weight: 300;
-        margin-left: 3vw;
+        margin: 2vw 0 1.5vw;
+      }
+      p {
+        font-size: 1.1vw;
+        margin: 0.5vw;
+        margin-left: 1vw;
+        color: $grey-dark;
+        font-family: $nav-font;
+        font-weight: 300;
+        text-align: center;
+      }
+      .networkContainer {
+        display: flex;
+        align-items: center;
+        width: 25%;
+        transition: all 0.2s;
+        img {
+          width: 1.5vw;
+          height: 1.5vw;
+          object-fit: contain;
+        }
+        &:hover {
+          background-color: $grey-light;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -110,9 +151,9 @@
   .endContainer {
     p {
       width: 100%;
-      font-size: 0.8vw;
+      font-size: 1vw;
       font-family: $nav-font;
-      font-weight: bold;
+      font-weight: 300;
       text-align: center;
     }
   }
@@ -130,7 +171,6 @@
 
   .footer {
     display: flex;
-    background-color: $grey-medium;
     flex-direction: column;
     .brandContainer {
       display: flex;
@@ -147,14 +187,15 @@
       width: 80%;
       padding: 5vw 10%;
       flex-wrap: wrap;
+      justify-content: flex-start;
       a {
-        color: $grey-dark;
-        text-decoration: underline;
+        color: $text-color;
         width: 50%;
         margin: 5% 0;
         font-size: 4vw;
         font-family: $nav-font;
-        font-weight: bold;
+        font-weight: 300;
+        text-align: left;
       }
     }
     .newsletterContainer {
@@ -164,18 +205,18 @@
       background-color: $grey-dark;
       padding: 10vw 10%;
       p {
-        color: white;
+        color: $text-color;
         margin: 0 0 5vw;
-        font-weight: 500;
+        font-weight: 300;
         font-family: $nav-font;
         font-size: 4vw;
         line-height: 4vw;
       }
       input {
         width: 96%;
-        padding: 3% 2% 3%;
-        font-size: 4vw;
-        font-weight: 500;
+        padding: 6% 2% 6%;
+        font-size: 5vw;
+        font-weight: 300;
         font-family: $nav-font;
         border: 0;
       }
@@ -185,38 +226,50 @@
         border: 0;
         font-size: 4vw;
         font-family: $nav-font;
-        font-weight: bold;
+        font-weight: 300;
+        margin-left: 0vw;
         padding: 5% 0;
         margin-top: 5vw;
         width: 100%;
       }
     }
-    .coordContainer {
-      display: flex;
+    .coordsContainer {
+      width: 90%;
       flex-direction: column;
-      align-items: flex-start;
-      width: 95%;
-      background-color: $grey-light;
-      padding: 5% 0 5% 5%;
-      div {
+      .lastPhotosContainer {
         display: flex;
-        margin: 5% 0;
-        justify-content: center;
-        align-items: flex-start;
+        align-items: center;
         img {
-          width: 4vw;
-          height: 4vw;
-          object-fit: cover;
+          width: 33.3333%;
+          height: 50vw;
+          margin-left: 0;
+        }
+      }
+      .coordsWrapper {
+        margin-left: 0;
+        flex-direction: column;
+        margin: 5vw 0;
+        width: 100%;
+        h3 {
+          font-size: 5vw;
+          margin: 6vw 0 4.5vw;
         }
         p {
           font-size: 4vw;
-          font-family: $nav-font;
-          margin: 0;
-          font-weight: 300;
-          margin-left: 3vw;
+          margin: 5vw 0;
+          margin-left: 1vw;
+          width: 75%;
+        }
+        .networkContainer {
+          width: 35%;
+          img {
+            width: 8vw;
+            height: 8vw;
+          }
         }
       }
     }
+
     .spacer {
       height: 20vw;
     }
@@ -225,7 +278,7 @@
         width: 100%;
         font-size: 4vw;
         font-family: $nav-font;
-        font-weight: bold;
+        font-weight: 300;
         text-align: center;
       }
     }

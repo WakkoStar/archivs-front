@@ -38,7 +38,7 @@ export default function Adresses({
         {},
         {
           headers: {
-            Authorization: "Bearer " + user.jwt,
+            Authorization: "Bearer " + user?.jwt,
           },
         }
       );
@@ -61,7 +61,7 @@ export default function Adresses({
       { adresses: allAdresses },
       {
         headers: {
-          Authorization: "Bearer " + user.jwt,
+          Authorization: "Bearer " + user?.jwt,
         },
       },
       (response) => {

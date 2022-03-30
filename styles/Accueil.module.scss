@@ -1,0 +1,363 @@
+@import 'constants.scss';
+@import 'SharedStyles.scss';
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .presentationContainer {
+    height: 100vh;
+    display: flex;
+    width: 90%;
+    margin-top: 2vw;
+    justify-content: center;
+    h2 {
+      font-size: 3.5vw;
+      text-align: center;
+    }
+    h3 {
+      font-size: 1.5vw;
+    }
+
+    .texts {
+      width: 70%;
+      height: 100%;
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        top: 75%;
+        width: 20vw;
+        position: absolute;
+      }
+    }
+    .image {
+      width: 30%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 80%;
+        height: 80%;
+        object-fit: cover;
+      }
+    }
+  }
+  .newProductsContainer {
+    display: flex;
+    width: 100%;
+    padding: 10vw 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      text-align: center;
+      width: 100%;
+    }
+    .newProductsWrapper {
+      width: 80%;
+      padding: 2vw 0;
+      margin: 0 auto;
+      display: flex;
+    }
+    button {
+      width: 20%;
+    }
+  }
+  .parcoursContainer {
+    width: 50%;
+    padding: 3vw 0;
+    img {
+      width: 100%;
+      height: 28vw;
+      object-fit: cover;
+    }
+    h2 {
+      text-align: left;
+      padding: 1vw 0;
+    }
+    pre {
+      font-size: 1.2vw;
+      line-height: 1.8vw;
+      font-family: $nav-font;
+      font-weight: 300;
+      width: 90%;
+      color: $text-color;
+      margin: 0;
+      min-height: 0;
+      max-height: 20vw;
+      overflow-y: scroll;
+      padding: 0 10% 0 0;
+      white-space: pre-wrap; /* Since CSS 2.1 */
+      white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+      white-space: -pre-wrap; /* Opera 4-6 */
+      white-space: -o-pre-wrap; /* Opera 7 */
+      word-wrap: break-word; /* Internet Explorer 5.5+ */
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: $bg-color;
+      }
+
+      &::-webkit-scrollbar {
+        width: 6px;
+        background-color: $text-color;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $text-color;
+        border-radius: 0.5vw;
+      }
+    }
+  }
+  .qualityContainer {
+    display: flex;
+    width: 80%;
+    height: 100vh;
+    padding: 10vw 0;
+    justify-content: center;
+    align-items: center;
+    .qualityWrapper {
+      display: flex;
+      width: 75%;
+      padding: 1% 12.5%;
+      margin: 1vw 0;
+      align-items: center;
+      justify-content: space-evenly;
+      img {
+        width: 3vw;
+        height: 3vw;
+        object-fit: contain;
+        filter: invert(100%);
+      }
+    }
+    h2 {
+      text-align: left;
+      width: 50%;
+    }
+    h3 {
+      font-size: 1.5vw;
+    }
+    .qualityTexts {
+      width: 40%;
+      height: 100%;
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qualityImage {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 80%;
+        height: 90%;
+        object-fit: cover;
+      }
+    }
+  }
+  .galleryContainer {
+    display: flex;
+    width: 100%;
+    padding: 10vw 0;
+    flex-direction: column;
+    h2,
+    h3 {
+      text-align: center;
+    }
+  }
+  .galleryWrapper {
+    overflow-x: scroll;
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    padding: 1vw 0;
+    img {
+      width: auto;
+      height: 35vw;
+      // &:last-child {
+      //   margin-right: 10%;
+      // }
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: $bg-color;
+    }
+
+    &::-webkit-scrollbar {
+      width: 1vw;
+      height: 1vw;
+      background-color: $text-color;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $text-color;
+      border-radius: 0.5vw;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    width: 90%;
+    margin: 3% auto 0;
+
+    .presentationContainer {
+      flex-direction: column;
+      height: 100vh;
+      margin-top: 0;
+      h2 {
+        font-size: 10.5vw;
+      }
+      h3 {
+        font-size: 4vw;
+        margin: 0;
+        text-align: center;
+        line-height: 4vw;
+      }
+
+      .texts {
+        width: 100%;
+        height: auto;
+        margin: 15vw 0;
+        button {
+          top: 0%;
+          width: 80vw;
+          position: relative;
+        }
+      }
+      .image {
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .newProductsContainer {
+      padding: 20vw 0;
+      h3 {
+        text-align: center;
+        width: 100%;
+      }
+      .newProductsWrapper {
+        flex-direction: column;
+      }
+      button {
+        width: 80%;
+      }
+    }
+    .parcoursContainer {
+      width: 100%;
+      padding: 20vw 0;
+      h2 {
+        font-size: 7vw;
+      }
+      img {
+        width: 100%;
+        height: 50vh;
+        margin-bottom: 10vw;
+      }
+      pre {
+        font-size: 4.2vw;
+        line-height: 4.8vw;
+        width: 98%;
+        max-height: 50vh;
+        padding: 0 2% 0 0;
+        &::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        &::-webkit-scrollbar {
+          width: 6px;
+          background-color: $text-color;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $text-color;
+          border-radius: 0.5vw;
+        }
+      }
+    }
+
+    .qualityContainer {
+      flex-direction: column;
+      width: 100%;
+      height: 100vh;
+      padding: 20vw 0;
+      .qualityWrapper {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        img {
+          width: 10vw;
+          height: 10vw;
+          object-fit: contain;
+          filter: invert(100%);
+        }
+      }
+      h2 {
+        text-align: left;
+        width: 100%;
+        margin: 5vw 0 5vw 5vw;
+      }
+      h3 {
+        font-size: 1.5vw;
+      }
+      .qualityTexts {
+        width: 80%;
+        height: auto;
+        margin: 5vw 0;
+      }
+      .qualityImage {
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .galleryWrapper {
+      padding: 20vw 0;
+      width: 100%;
+      margin-left: 0%;
+      img {
+        height: 50vh;
+      }
+
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: $bg-color;
+      }
+
+      &::-webkit-scrollbar {
+        width: 5vw;
+        height: 5px;
+        background-color: $text-color;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $text-color;
+        border-radius: 0.5vw;
+      }
+    }
+  }
+}

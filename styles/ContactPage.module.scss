@@ -1,28 +1,30 @@
-@import "constants.scss";
-@import "SharedStyles.scss";
+@import 'constants.scss';
+@import 'SharedStyles.scss';
 
 .main {
   width: 40%;
-  padding: 2% 30%;
+  padding: 10% 30%;
   margin-top: 3%;
   display: flex;
   flex-direction: column;
 
+  input,
+  textarea,
   button {
-    margin: 0.5vw 0;
+    margin: 0.8vw 0;
   }
 
   .showPassword {
-    font-size: 0.8vw;
+    font-size: 1vw;
     margin: 0.3vw 0;
     text-decoration: underline;
-    font-weight: 700;
+    font-weight: 300;
     font-family: $nav-font;
     color: $text-color;
   }
 
   .acceptConditions {
-    font-size: 0.8vw;
+    font-size: 1vw;
     line-height: 1.2vw;
     width: 100%;
     margin: 0.8vw auto;
@@ -48,7 +50,7 @@
     }
     p {
       margin: 0.2vw 0 0.2vw 0.2vw;
-      font-size: 0.8vw;
+      font-size: 1vw;
       font-family: $nav-font;
       font-weight: 300;
     }
@@ -63,15 +65,17 @@
     display: flex;
     flex-direction: column;
 
+    input,
+    textarea,
     button {
-      margin: 4.5vw 0;
+      margin: 2vw 0;
     }
 
     .showPassword {
       font-size: 3.5vw;
       margin: 1vw 0;
       text-decoration: underline;
-      font-weight: 700;
+      font-weight: 300;
       font-family: $nav-font;
       color: $text-color;
     }

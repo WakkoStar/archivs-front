@@ -1,167 +1,140 @@
-import Image from "next/image";
+import { useEffect} from 'react';
 import Layout from "../components/Layout";
+import styles from "../styles/Accueil.module.scss"
 import Product from "../components/Product";
-import styles from "../styles/BoutiquePage.module.scss";
-import FilterPic from "../assets/logos/filter.png";
 import { fetchDataFromAPI } from "../utils/dataFetcher";
-import { useState, useEffect } from "react";
+import Link from 'next/link';
 
-export default function BoutiquePage({ categories, products, codePromo }) {
-  const [filter, setFilter] = useState(undefined);
-  const [sort, setSort] = useState(false);
-  const [sortedProducts, setSortedProducts] = useState([]);
-  const [sortedType, setSortedType] = useState({ sort: "ventes", desc: true });
-  const [filterText, setFilterText] = useState("");
-
-  const filterProduct = ({ nom, tags }, text) => {
-    if (text == "") {
-      return true;
-    }
-    return (
-      nom.toLowerCase().includes(text.toLowerCase()) ||
-      tags.some(({ texte }) => texte.toLowerCase().includes(text.toLowerCase()))
-    );
-  };
+export default function HomePage({
+  faq,
+  presentation,
+  produits_populaires,
+  produits_nouveaux,
+  client_conquis,
+  image_presentation,
+  image_banniere,
+  image_produit
+}) {
 
   useEffect(() => {
-    const sortProducts = () => {
-      const type = sortedType.sort;
-      const desc = sortedType.desc;
-      setSort(false);
-
-      let res = products;
-      if (type == "prix") {
-        res = res.sort((a, b) => {
-          let settedMinPriceA = Number.MAX_VALUE;
-          a.type_de_produit.forEach(({ prix, promotion }) => {
-            if (promotion?.actif && promotion?.value < settedMinPriceA) {
-              settedMinPriceA = promotion?.value;
-              return;
-            }
-            if (prix < settedMinPriceA) {
-              settedMinPriceA = prix;
-            }
-          });
-          let settedMinPriceB = Number.MAX_VALUE;
-          b.type_de_produit.forEach(({ prix, promotion }) => {
-            if (promotion?.actif && promotion?.value < settedMinPriceB) {
-              settedMinPriceB = promotion?.value;
-              return;
-            }
-            if (prix < settedMinPriceB) {
-              settedMinPriceB = prix;
-            }
-          });
-          return desc
-            ? settedMinPriceB - settedMinPriceA
-            : settedMinPriceA - settedMinPriceB;
-        });
-      } else if (type == "created_at") {
-        res = res.sort((a, b) => Date.parse(b[type]) - Date.parse(a[type]));
-      } else if (type == "nom") {
-        res = res.sort((a, b) => a[type].localeCompare(b.type));
-      } else {
-        res = res.sort((a, b) =>
-          desc ? b[type] - a[type] : a[type] - b[type]
-        );
-      }
-      setSortedProducts(res);
-    };
-
-    sortProducts("prix");
-  }, [products, setSortedType, sortedType]);
+  }, [])
 
   return (
     <Layout>
-      <main
-        className={styles.main}
-        style={{ marginTop: codePromo.banniere ? "17%" : "20%" }}
-      >
-        {codePromo.banniere && (
-          <img
-            src={`${codePromo.banniere.url}`}
-            className={styles.banniere}
-            alt="banniere"
-          />
-        )}
-        <h2>Produits</h2>
-        <div className={styles.categoryContainer}>
-          <ul>
-            <li onClick={() => setFilter(undefined)}>Tout</li>
-            {categories.map(({ id, nom, slug }) => (
-              <li key={id} onClick={() => setFilter(slug)}>
-                {nom}
-              </li>
-            ))}
-          </ul>
+      <main className={styles.main}>
+        <div className={styles.presentationContainer}>
+          <div className={styles.texts}>
+            <h3>LE DUO DE CHOC POUR VOTRE INTÉRIEUR</h3>
+            <h2>LETTRAGE & PHOTOGRAPHIE</h2>
+            <Link href="/boutique?c=posters&sort=ventes&desc=true" passHref>
+              <button>
+                Parcourir tous les posters
+              </button>
+            </Link>
+
+            </div>  
+          <div className={styles.image}><img src={image_banniere?.url}></img></div>
         </div>
-        <div className={styles.productsSortContainer}>
-          <button onClick={() => setSort(!sort)}>
-            <Image src={FilterPic} alt="filter" />
-          </button>
-          <div
-            className={
-              styles[
-                sort ? "productsSortDropdownSelected" : "productsSortDropdown"
-              ]
-            }
-          >
-            <p onClick={() => setSortedType({ sort: "ventes", desc: true })}>
-              Popularité
-            </p>
-            <p onClick={() => setSortedType({ sort: "prix", desc: false })}>
-              Prix croissant
-            </p>
-            <p onClick={() => setSortedType({ sort: "prix", desc: true })}>
-              Prix décroissant
-            </p>
-            <p onClick={() => setSortedType({ sort: "nom", desc: false })}>
-              Nom
-            </p>
-            <p
-              onClick={() => setSortedType({ sort: "created_at", desc: true })}
-            >
-              Nouveauté
-            </p>
+        <div className={styles.newProductsContainer}>
+          <div className={styles.texts}>
+            <h2>LES DERNIÈRES CRÉATIONS</h2>
+            <h3>Réfléchir c&apos;est bien, concevoir c&apos;est mieux.</h3>
+          </div>  
+          <div className={styles.newProductsWrapper}>
+              {produits_nouveaux?.map(
+                ({
+                  id,
+                  nouveau,
+                  stock,
+                  apercu,
+                  type_de_produit,
+                  nom,
+                }) => {
+                  return (
+                    <Product
+                      id={id}
+                      key={id}
+                      data={{ nouveau, stock, type_de_produit }}
+                      title={nom}
+                      src={`${apercu.url}`}
+                    />
+                  );
+                }
+              )}
           </div>
-          <input
-            type="text"
-            placeholder="Rechercher"
-            onChange={(e) => setFilterText(e.target.value)}
-          />
+          <Link href="/boutique?sort=created_at&desc=true" passHref>
+            <button>
+              En voir plus
+            </button>
+          </Link>
         </div>
-        <div className={styles.productsWrapper}>
-          {sortedProducts.map(
-            ({
-              id,
-              nouveau,
-              stock,
-              apercu,
-              type_de_produit,
-              nom,
-              categories_produits,
-              tags,
-            }) => {
-              const isSelected =
-                categories_produits.find(({ slug }) => slug === filter) ||
-                filter == undefined;
-
-              const isSearched = filterProduct({ nom, tags }, filterText);
-
-              if (!isSelected || !isSearched) {
-                return null;
-              }
-              return (
-                <Product
-                  id={id}
-                  key={id}
-                  data={{ nouveau, stock, type_de_produit }}
-                  title={nom}
-                  src={`${apercu.url}`}
-                />
-              );
-            }
-          )}
+        <div className={styles.parcoursContainer}>
+        <img src={image_presentation?.url}></img>
+        <h2>PRÉSENTATION</h2>
+        <pre>
+        {presentation}
+        </pre>
+        </div>
+        <div className={styles.qualityContainer}>
+        <div className={styles.qualityImage}><img src={image_produit?.url}/></div>
+          <div className={styles.qualityTexts}>
+            <div className={styles.qualityWrapper}>
+            <img src="https://img.icons8.com/glyph-neue/100/000000/weight-kg.png"/>
+              <h2>PAPIER MAT DURABLE 200G/M2</h2>
+            </div>
+            <div className={styles.qualityWrapper}>
+            <img src="https://img.icons8.com/ios/100/000000/drop-of-blood--v2.png"/>
+              <h2>COULEURS ÉCLATANTES</h2>
+            </div>
+          </div>  
+        </div>
+        <div className={styles.parcoursContainer}>
+        <h2>FAQ</h2>
+        <pre>
+        {faq}
+        </pre>
+        </div>
+        <div className={styles.galleryContainer}>
+          <h2>DES CLIENTS CONQUIS ?</h2>
+          <h3>Parce qu'une image vaut mille mots...</h3>
+          <div className={styles.galleryWrapper}>
+            {client_conquis?.map(({id, url}) => 
+              <img key={id} src={url}></img>
+            )}
+          </div>
+        </div>
+        <div className={styles.newProductsContainer}>
+          <div className={styles.texts}>
+            <h2>LES PLUS POPULAIRES</h2>
+            <h3>Pour un intérieur à votre image.</h3>
+          </div>  
+          <div className={styles.newProductsWrapper}>
+              {produits_populaires?.map(
+                ({
+                  id,
+                  nouveau,
+                  stock,
+                  apercu,
+                  type_de_produit,
+                  nom,
+                }) => {
+                  return (
+                    <Product
+                      id={id}
+                      key={id}
+                      data={{ nouveau, stock, type_de_produit }}
+                      title={nom}
+                      src={`${apercu.url}`}
+                    />
+                  );
+                }
+              )}
+          </div>
+          <Link href="/boutique?sort=ventes&desc=true" passHref>
+            <button>
+              En voir plus
+            </button>
+          </Link>
         </div>
       </main>
     </Layout>
@@ -169,11 +142,21 @@ export default function BoutiquePage({ categories, products, codePromo }) {
 }
 
 export async function getStaticProps(context) {
-  const categories = await fetchDataFromAPI("/categories", []);
-  const products = await fetchDataFromAPI("/produits", []);
-  const codePromo = await fetchDataFromAPI("/codes-promos/check/public", {});
+
+  // const products = await fetchDataFromAPI("/produits", []);
+  const homepage = await fetchDataFromAPI("/home-page-archivs", {
+    faq: '',
+    presentation: '',
+    produits_populaires: [],
+    produits_nouveaux: [],
+    client_conquis: [], //{url: ""}[]
+    image_presentation: {url: ""},
+    image_banniere: {url: ""},
+    image_produit: {url: ""}
+  })
+
   return {
-    props: { categories, products, codePromo },
-    revalidate: 60, 
+    props: { ...homepage },
+    revalidate: 60,
   };
 }

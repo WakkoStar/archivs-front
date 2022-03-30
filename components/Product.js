@@ -55,15 +55,11 @@ export default function Product({ data, src, title, id }) {
   const priceObject = setPrice();
 
   return (
-    <Link href={`/${id}`} passHref>
+    <Link href={`/boutique/${id}`} passHref>
       <div className={styles.productContainer}>
         {tag !== '' && <h4>{tag}</h4>}
-        <Image
+        <img
           src={src}
-          loader={() => src}
-          width={'170%'}
-          height={'250%'}
-          objectFit={'cover'}
           alt={title}
         />
         <p className={styles.titleText}>{title}</p>
@@ -73,12 +69,12 @@ export default function Product({ data, src, title, id }) {
         {priceObject.promotion ? (
           <div className={styles.promotionContainer}>
             <p className={styles.priceTextPromotion}>
-              {priceObject.promotion} €
+              { parseFloat(priceObject.promotion).toFixed(2)} €
             </p>
-            <p className={styles.priceTextOutdated}>{priceObject.value} €</p>
+            <p className={styles.priceTextOutdated}>{parseFloat(priceObject.value).toFixed(2)} €</p>
           </div>
         ) : (
-          <p className={styles.priceText}>{priceObject.value} €</p>
+          <p className={styles.priceText}>{parseFloat(priceObject.value).toFixed(2)} €</p>
         )}
       </div>
     </Link>

@@ -1,12 +1,14 @@
-@import "constants.scss";
-@import "SharedStyles.scss";
+@import 'constants.scss';
+@import 'SharedStyles.scss';
 
 .main {
   width: 40%;
   margin: 3% auto;
 
   .categoryContainer {
-    width: 50vw;
+    width: 200%;
+    margin-left: -50%;
+    transform: scale(0.5);
   }
 
   h2 {
@@ -109,6 +111,8 @@
 
     .categoryContainer {
       width: 99vw;
+      transform: scale(1);
+      margin-left: 0;
     }
 
     h2 {
