@@ -86,7 +86,7 @@ export default function Layout({ children }) {
         </div>
         <div className={styles.linksContainer}>
           {footerLinks?.map(({ lien, nom, id, pdf }) => (
-            <Link href={pdf ? `${pdf.url}` : lien} key={id}>
+            <Link href={pdf ? `https://${pdf.url}` : lien} key={id}>
               <a>{nom}</a>
             </Link>
           ))}
